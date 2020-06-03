@@ -14,19 +14,7 @@ const randomFunc = {
 	symbol: getRandomSymbol
 }
 
-clipboard.addEventListener('click', () => {
-	const textarea = document.createElement('textarea');
-	const password = resultEl.innerText;
-	
-	if(!password) { return; }
-	
-	textarea.value = password;
-	document.body.appendChild(textarea);
-	textarea.select();
-	document.execCommand('copy');
-	textarea.remove();
-	alert('Password copied to clipboard');
-});
+
 
 generate.addEventListener('click', () => {
 	const length = +lengthEl.value;
@@ -78,23 +66,38 @@ function getRandomSymbol() {
 
 
 function getSquare(){
-	var square = document.createElement('div');
-	square.className = 'newSquare';
-	document.body.appendChild(square);
-	var User = document.createTextNode("User: ");
-	var Password = document.createTextNode("Password: ");
-	var Site = document.createTextNode("Site: "); 
-	square.appendChild(User);  
-	square.appendChild(Password);  	
-	square.appendChild(Site);
-}
+	const password = resultEl.innerText;
 
-function repeat(){
-	getSquare();
-	const trueValue = true;
-	if(trueValue === true) {
-		getSquare();
-		trueValue = false;
-	} else return alert("checked");
+	clipboard.addEventListener('click', () => {
+		const textarea = document.createElement('textarea');
+	
+		if(!password) { return; }
+		
+		textarea.value = password;
+		document.body.appendChild(textarea);
+		textarea.select();
+		document.execCommand('copy');
+		textarea.remove();
+		alert('Password copied to clipboard');
+	});
+
+	// var square = document.createElement('div');
+	// square.className = 'newSquare';
+	// document.body.appendChild(square);
+
+	var site = document.createElement("INPUT");
+	site.setAttribute("type", "text");
+	site.setAttribute("placeholder", "Site");
+	document.body.appendChild(site);
+
+	var user = document.createElement("INPUT");
+	user.setAttribute("type", "text");
+	user.setAttribute("placeholder", "User");
+	document.body.appendChild(user);
+
+	var pass = document.createElement("INPUT");
+	pass.setAttribute("type", "text");
+	pass.setAttribute("value", password);
+	document.body.appendChild(pass);
 
 }

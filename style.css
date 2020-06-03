@@ -120,6 +120,5 @@ input[type=checkbox] {
 	width: 400px;
 	max-width: 100%;
 	content: "";
-	display: block;
-	position: block;
+
 }
